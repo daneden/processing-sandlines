@@ -14,11 +14,15 @@ float h = random(255);
 
 void setup() {
   noLoop();
-  background(255);
+  noFill();
+  colorMode(HSB);
+  
   size(1000, 1000);
   smooth(2);
   pixelDensity(displayDensity());
-  colorMode(HSB);
+  
+  background(255);
+  blendMode(MULTIPLY);
   
   // Slightly inset the drawing
   translate(width*0.1, height*0.1);
@@ -48,8 +52,6 @@ float u(float p) {
 
 void drawLine(float x1, float x2, float volatility) {
   float w = x2 - x1;
-  noFill();
-  blendMode(MULTIPLY);
   beginShape();
   curveVertex(0, x1);
   for (int i = 1; i < granularity; i++) {
